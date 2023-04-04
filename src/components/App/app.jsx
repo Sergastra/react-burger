@@ -1,13 +1,12 @@
 import React from 'react';
-import './App.css';
-import AppHeader from './components/AppHeader/AppHeader'
+import './app.css';
+import AppHeader from '../AppHeader/app-header'
 
 function App() {
   return (
     <>
-     <AppHeader />
+      <AppHeader />
     </>
   );
 }
-
 export default App;
