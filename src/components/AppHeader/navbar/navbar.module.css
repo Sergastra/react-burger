@@ -1,0 +1,21 @@
+
+.navbar_nav {
+    display: flex;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-around
+}
+
+.nav_item {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+a {
+    text-decoration: none;
+    margin: 10px;
+    padding: 10px;
+    color: #ffff;
+}
