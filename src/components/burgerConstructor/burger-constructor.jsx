@@ -1,6 +1,6 @@
 const BurgerConstructor = ({ ingredients }) => {
     return (
-        <div>
+        <div >
             {ingredients.map((item) => {
                 return (
                     <div key={item.id}>

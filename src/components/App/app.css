@@ -7,3 +7,8 @@
 App {
   background: #131316;
 }
+
+main {
+  display: flex;
+ 
+}

@@ -1,0 +1,11 @@
+.ingredients_container {
+    display: flex;
+    width: 100%;
+}
+.ingredients_item {
+    display: flex;
+}
+
+.ingredients_header {
+    display: flex;
+}
