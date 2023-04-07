@@ -9,6 +9,6 @@ const checkResponse = (res) => {
     .then(checkResponse)
     .then(data=> {
       if(data?.success) return data.data;
-      return Promise.reject()
+      return Promise.reject(data)
     });
   };

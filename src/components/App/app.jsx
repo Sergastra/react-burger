@@ -1,9 +1,9 @@
-import './app.css';
+import styles from './app.css';
 import {useEffect, useState} from 'react';
 import AppHeader from '../AppHeader/app-header';
 import BurgerConstructor from '../burgerConstructor/burger-constructor';
 import BurgerIngredients from '../burgerIngredients/burger-ingredients';
-import { getIngredients } from '../utils/app';
+import { getIngredients } from '../utils/api';
 import Preloader from '../preloader/preloader';
 
 
@@ -19,15 +19,18 @@ function App() {
   
 
   return (
-    <div>
+    <div className= {styles.app}>
       <AppHeader />
       {ingredientsLoading ? (
         <Preloader/>
       ) : (
-      <main>
-        <BurgerConstructor ingredients={ingredients}/>
-        <BurgerIngredients ingredients={ingredients}/>
-      </main>
+      <>
+        <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-5`}> Соберите бургер </h1>
+        <main>
+          <BurgerIngredients ingredients={ingredients}/>
+          <BurgerConstructor ingredients={ingredients}/>
+        </main>
+      </>
       )}
     </div>
     
