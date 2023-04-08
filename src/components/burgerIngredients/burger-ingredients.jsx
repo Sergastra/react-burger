@@ -19,28 +19,42 @@ const BurgerIngredients = ({ ingredients }) => {
         main: 'Начинки'
     }
 
+    // const handleClicks = (elem) => {
+    //     if (elem.type === 'bun') {
+    //         setCurrent(Tab.scrollIntoView({ behavior: "smoot" }))
+    //     // } else {
+    //     //     // const a = [{2},{2},{2},{2},{2},{2}].some(elem=> elem === 7)
+    //     //     setIngredients(prev => {
+    //     //         if (!prev.some(item => item._id === obj._id)) {
+    //     //             return [...prev, obj]
+    //     //         } else { 
+    //     //           return prev
+    //     //         }
+    //     //     })
+    //     // }
+    // }}
 
-    const handleClicks = (e) => {
-        setCurrent( current);
-    };
+    // const handleClicks = (e) => {
+    //     setCurrent( current);
+    // };
 
   return (
     <div className={styles.ingredients_container}>
-    <div style={{ display: "flex" }} onClick={handleClicks}>
+    <div style={{ display: "flex" }} >
           <Tab value="bun" active={current === "bun"} onClick={(e) => {
-              scollTobunRef.current.scrollIntoView({ behavior: "smoot" })
+              scollTobunRef.current.scrollIntoView({ behavior: "smooth" })
               setCurrent(e)
           }}>
               Булки
           </Tab>
           <Tab value="sauce" active={current === "sauce"} onClick={(e) => {
-              scollTosauceRef.current.scrollIntoView({ behavior: "smoot" })
+              scollTosauceRef.current.scrollIntoView({ behavior: "smooth" })
               setCurrent(e)
           }}>
               Соусы
           </Tab>
           <Tab value="main" active={current === "main"} onClick={(e) => {
-              scollTomainRef.current.scrollIntoView({ behavior: "smoot" })
+              scollTomainRef.current.scrollIntoView({ behavior: "smooth" })
               setCurrent(e)
           }}>
               Начинки
@@ -62,11 +76,12 @@ const BurgerIngredients = ({ ingredients }) => {
                 <h3 className={styles.ingredients_header} ref={carrentRef} >{translate[itemType]} </h3>
                 <div className={styles.ingredients_body}>
                     {ingredients
-                        .filter((item) => item.type === itemType)
+                        .filter((elem) => elem.type === itemType)
                         .map((item) => {
                             return (
                                 
                                 <BurgerItem
+                                    // onClick={handleClicks}
                                     key={item._id}
                                     name={item.name}
                                     image={item.image}
