@@ -20,13 +20,13 @@ const BurgerIngredients = ({ ingredients }) => {
     }
 
 
-    const handleClicks = () => {
-        onClick( ingredients );
+    const handleClicks = (e) => {
+        setCurrent( current);
     };
 
   return (
     <div className={styles.ingredients_container}>
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex" }} onClick={handleClicks}>
           <Tab value="bun" active={current === "bun"} onClick={(e) => {
               scollTobunRef.current.scrollIntoView({ behavior: "smoot" })
               setCurrent(e)
@@ -47,7 +47,7 @@ const BurgerIngredients = ({ ingredients }) => {
           </Tab>
     </div>
 
-    <section className="ingredients-section">
+    <section className={styles.ingredients_section}>
     {typeIngredient.map((itemType) =>  {
         let carrentRef = scollTomainRef;
         if (itemType === 'bun') {
@@ -58,27 +58,24 @@ const BurgerIngredients = ({ ingredients }) => {
 
         return(
 
-            <div className={styles.ingredients_item} key={itemType}>
-                <h3 className={styles.ingredients_header} ref={carrentRef}>{translate[itemType]}</h3>
-
-                {ingredients
-                    .filter((item) => item.type === itemType)
-                    .map((item) => {
-                        return (
-                            <div>
+            <div  key={itemType}>
+                <h3 className={styles.ingredients_header} ref={carrentRef} >{translate[itemType]} </h3>
+                <div className={styles.ingredients_body}>
+                    {ingredients
+                        .filter((item) => item.type === itemType)
+                        .map((item) => {
+                            return (
+                                
                                 <BurgerItem
+                                    key={item._id}
                                     name={item.name}
                                     image={item.image}
                                     price={item.price}
-                                    onClick={() => handleClicks(ingredients)}
                                 />
-
-                            </div>
-
-                        )
-
-                    })
-                }
+                            )
+                        })
+                    }
+                </div>
             </div>
         ) 
         }  

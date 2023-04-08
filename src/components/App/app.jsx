@@ -19,20 +19,20 @@ function App() {
   
 
   return (
-    <div className= {styles.app}>
+    <>
       <AppHeader />
       {ingredientsLoading ? (
         <Preloader/>
       ) : (
       <>
-        <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-5`}> Соберите бургер </h1>
+        <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-20`}> Соберите бургер </h1>
         <main>
           <BurgerIngredients ingredients={ingredients}/>
           <BurgerConstructor ingredients={ingredients}/>
         </main>
       </>
       )}
-    </div>
+    </>
     
   );
 }
