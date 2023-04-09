@@ -1,10 +1,10 @@
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState, useRef, onClick } from "react";
+import { useState, useRef,  } from "react";
 import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css'
 
 
-const BurgerIngredients = ({ ingredients }) => {
+const BurgerIngredients = ({ ingredients, setDeleteIngredients, setBun }) => {
     const [current, setCurrent] = useState('bun');
 
     const typeIngredient = ["bun", "sauce", "main"];
@@ -19,20 +19,20 @@ const BurgerIngredients = ({ ingredients }) => {
         main: 'Начинки'
     }
 
-    // const handleClicks = (elem) => {
-    //     if (elem.type === 'bun') {
-    //         setCurrent(Tab.scrollIntoView({ behavior: "smoot" }))
-    //     // } else {
-    //     //     // const a = [{2},{2},{2},{2},{2},{2}].some(elem=> elem === 7)
-    //     //     setIngredients(prev => {
-    //     //         if (!prev.some(item => item._id === obj._id)) {
-    //     //             return [...prev, obj]
-    //     //         } else { 
-    //     //           return prev
-    //     //         }
-    //     //     })
-    //     // }
-    // }}
+    const handleClicks = (elem) => {
+        if (elem.type === 'bun') {
+            setBun(elem._id === 'bun')
+        } else {
+            // const a = [{2},{2},{2},{2},{2},{2}].some(elem=> elem === 7)
+            setDeleteIngredients(prev => {
+                if (!prev.some(item => item._id === elem._id)) {
+                    return [...prev, elem]
+                } else { 
+                  return prev
+                }
+            })
+        }
+    }
 
     // const handleClicks = (e) => {
     //     setCurrent( current);
@@ -81,7 +81,7 @@ const BurgerIngredients = ({ ingredients }) => {
                             return (
                                 
                                 <BurgerItem
-                                    // onClick={handleClicks}
+                                    onClick={handleClicks}
                                     key={item._id}
                                     name={item.name}
                                     image={item.image}

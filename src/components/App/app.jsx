@@ -9,6 +9,8 @@ import Preloader from '../preloader/preloader';
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
+  const [deleteIngredients, setDeleteIngredients] = useState([]);
+  const [bun, setBun] = useState('');
   const [ingredientsLoading, setIngredientsLoading] = useState(true);
   useEffect(() => {
    getIngredients()
@@ -27,8 +29,8 @@ function App() {
       <>
         <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-20`}> Соберите бургер </h1>
         <main>
-          <BurgerIngredients ingredients={ingredients}/>
-          <BurgerConstructor ingredients={ingredients}/>
+          <BurgerIngredients ingredients={ingredients} setDeleteIngredients={setDeleteIngredients} setBun={setBun}/>
+          <BurgerConstructor ingredients={ingredients} deleteIngredients={deleteIngredients} bun={bun}/>
         </main>
       </>
       )}
