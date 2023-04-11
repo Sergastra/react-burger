@@ -1,15 +1,28 @@
 import { ConstructorElement, DragIcon, CurrencyIcon, Button  } from "@ya.praktikum/react-developer-burger-ui-components";
+import React from 'react';
 import css from './burger-constructor.module.css'
 // import { useState } from "react";
 
 
-const BurgerConstructor = ( { deleteIngredients, bun, setDeleteIngredients }) => {
+const BurgerConstructor = ({onIngredients, bun, setOnIngredients }) => {
     // const [ setIngredients] = useState([]);
     
     const handleDeleteElem = (id) => {
-            const result = deleteIngredients.filter((item) => item._id !== id)
-            setDeleteIngredients(result)
+            const result = onIngredients.filter((item) => item._id !== id)
+            setOnIngredients(result)
         }
+
+
+        // let opacity,dropMsgCls,column;
+        // if(canDrop) {
+        //     dropMsgCls = css.constructNo;
+        //     opacity = 0.5;
+        //     column = css.column_active;
+        // } else {
+        //     dropMsgCls = css.no_drop_msg;
+        //     opacity = 1;
+        //     column = css.column;//css.constructor_candrop;
+        // }
     return (
 
         
@@ -25,29 +38,31 @@ const BurgerConstructor = ( { deleteIngredients, bun, setDeleteIngredients }) =>
         //             </div>
         //         )})
         //     }</div>
-            <section className='constructorContainer'>
+            <section >
 
-<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
-    <div className={css.constructNo}> Пусто </div>
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px'}} key={bun._id}>
+    <div className={ css.constructNo }> Добавьте ингредиенты </div>
     {bun && 
-    <ConstructorElement className='constructor-element_pos_top ml-4 ' key={bun._id}
+    <ConstructorElement className= 'constructor-element_pos_top ml-15' 
         type="top"
         isLocked={true}
-        text={bun.name}
+        text={bun.name + '(верх)'}
         price={bun.price}
         thumbnail={bun.image}
     />
-}
+    }   
 
-    <ul className='constructor-item' >
+
+    <ul >
 
         {
-            deleteIngredients.map((item) => {
+            onIngredients.map((item) => {
                 return (
-                    <li className='constructor-element__row pl-4' key={item._id}>
-                        <DragIcon type="primary" />
+                    <React.Fragment key={item._id}>
+                    <li className='constructor-element__row pl-4' >
+                        <DragIcon type="primary"/>
                         <div>
-                            <ConstructorElement key={item._id} 
+                            <ConstructorElement 
                                 handleClose={() => handleDeleteElem(item._id)}
                                 text={item.name}
                                 price={item.price}
@@ -55,26 +70,30 @@ const BurgerConstructor = ( { deleteIngredients, bun, setDeleteIngredients }) =>
                             />
                         </div>
                     </li>
+                    </React.Fragment>
+                    
                 )
             })
         }    
     </ul>
-    {bun && 
+    { bun &&
         <ConstructorElement
+            key={bun._id}
             type="bottom"
             isLocked={true}
-            text={bun.name}
+            text={bun.name + '(низ)'}
             price={bun.price}
             thumbnail={bun.image}
         />
     }
 
-    <div className='counter-container' >
-        <div className='counter-item' >
+    <div className={css.counter_container} >
+        <div className= {css.counter_item} >
             <p className="text text_type_digits-medium mr-4">610</p>
             <CurrencyIcon type="primary" />
         </div>
-        <Button  
+        <Button
+            htmlType="button"  
             type="primary" 
             size="large"
             children= "Оформить заказ"

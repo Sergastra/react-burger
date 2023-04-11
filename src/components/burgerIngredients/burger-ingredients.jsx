@@ -4,8 +4,9 @@ import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css'
 
 
-const BurgerIngredients = ({ ingredients, setDeleteIngredients, setBun }) => {
+const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
     const [current, setCurrent] = useState('bun');
+    // onIngredients = ingredients;
 
     const typeIngredient = ["bun", "sauce", "main"];
     const scollTobunRef = useRef();
@@ -19,12 +20,12 @@ const BurgerIngredients = ({ ingredients, setDeleteIngredients, setBun }) => {
         main: 'Начинки'
     }
 
-    const handleClicks = (elem) => {
+    const handleClick = (elem) => {
         if (elem.type === 'bun') {
-            setBun(elem._id === 'bun')
+            setBun(elem)
         } else {
             // const a = [{2},{2},{2},{2},{2},{2}].some(elem=> elem === 7)
-            setDeleteIngredients(prev => {
+            setOnIngredients(prev => {
                 if (!prev.some(item => item._id === elem._id)) {
                     return [...prev, elem]
                 } else { 
@@ -74,19 +75,18 @@ const BurgerIngredients = ({ ingredients, setDeleteIngredients, setBun }) => {
 
             <div  key={itemType}>
                 <h3 className={styles.ingredients_header} ref={carrentRef} >{translate[itemType]} </h3>
-                <div className={styles.ingredients_body}>
+                <div className={styles.ingredients_body} >
                     {ingredients
                         .filter((elem) => elem.type === itemType)
                         .map((item) => {
                             return (
-                                
+                                <div key={item._id} className={styles.ingredients_item} onClick={() => handleClick(item)}>
                                 <BurgerItem
-                                    onClick={handleClicks}
-                                    key={item._id}
                                     name={item.name}
                                     image={item.image}
                                     price={item.price}
                                 />
+                                </div>
                             )
                         })
                     }
