@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,14 +6,23 @@
 }
 
 App {
+  max-width: 1920px;
   background: #131316;
+  max-height: 700px;
+  overflow: hidden;
 }
 
 main {
+  margin: auto;
+  max-width: 1260px;
   display: flex;
   justify-content: space-around;
 }
 
-.title{
-  margin: 50px;
+.main_container{
+  width: 1260px;
 } 
+h1 {
+  font-size: 36px;
+  margin: 40px 0 20px 0;
+}

@@ -13,38 +13,36 @@ function App() {
   const [bun, setBun] = useState('');
   const [ingredientsLoading, setIngredientsLoading] = useState(true);
   useEffect(() => {
-   getIngredients()
-   .then(setIngredients)
-   .catch(() => alert("Во время загрузки произошла ошибка"))
-   .finally(() => setIngredientsLoading(false))
+    getIngredients()
+      .then(setIngredients)
+      .catch(() => alert("Во время загрузки произошла ошибка"))
+      .finally(() => setIngredientsLoading(false))
   }, []);
-  
+
 
   return (
     <>
       <AppHeader />
       {ingredientsLoading ? (
-        <Preloader/>
+        <Preloader />
       ) : (
-      <>
-        <h1 className={`${styles.title} text text_type_main-large mt-10 mb-5 pl-20`}> Соберите бургер </h1>
-        <main>
-          <BurgerIngredients 
-            ingredients={ingredients} 
-            // onIngredients={onIngredients} 
-            setOnIngredients={setOnIngredients}
-            setBun={setBun}
-          />
-          <BurgerConstructor 
-            onIngredients={onIngredients} 
-            setOnIngredients={setOnIngredients} 
-            bun={bun}
-          />
-        </main>
-      </>
+        <div className={styles.main_container}>
+          <main>
+            <BurgerIngredients
+              ingredients={ingredients}
+              setOnIngredients={setOnIngredients}
+              setBun={setBun}
+            />
+            <BurgerConstructor
+              onIngredients={onIngredients}
+              setOnIngredients={setOnIngredients}
+              bun={bun}
+            />
+          </main>
+        </div>
       )}
     </>
-    
+
   );
 }
 export default App;

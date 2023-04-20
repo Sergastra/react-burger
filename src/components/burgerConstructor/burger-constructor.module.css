@@ -1,32 +1,32 @@
 .constructNo {
+    display: none;
     font-size: 27px;
-    overflow: hidden;
 }
 
 .constructor_container {
     max-width: 50%;
-    max-height: 700px;
+    max-height: 650px;
     align-items: center;
     margin: 100px 0 0 0 ;
     padding: 10px;
 }
 
 .constructor_item {
+    overflow-x: hidden;
     overflow-y: auto;
-    height: 400px;
-    
+    height: 495px;
+    width: 100%;
 }
 
-.constructor-element {
+.constructor_element {
     margin: 5px;
     max-width: 90%;
 }
 
-
-
 .counter_container {
+    width: 536px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
     margin-top: 40px
 }
@@ -37,10 +37,6 @@
     margin-right: 40px;
 }
 
-::-webkit-scrollbar { width: 50px; height: 3px;}
-::-webkit-scrollbar-button {  background-color: #8585AD; }
-::-webkit-scrollbar-track {  background-color: #2F2F37;}
-::-webkit-scrollbar-track-piece { height: 50px; background-color: #2F2F37;}
-::-webkit-scrollbar-thumb { height: 20px; background-color: #8585AD; border-radius: 3px;}
-::-webkit-scrollbar-corner { background-color: #8585AD;}
-::-webkit-resizer { background-color: #8585AD;}
+::-webkit-scrollbar { width: 10px; height: 0px;}
+::-webkit-scrollbar-track-piece { height: 650px; background-color: #2F2F37;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #8585AD; border-radius: 6px;}
