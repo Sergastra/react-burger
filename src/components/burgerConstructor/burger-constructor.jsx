@@ -15,6 +15,12 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
         setOnIngredients(result)
     }
 
+    const orderSumm = (bun, items) => {
+		let summ = (bun)? bun.price*2 : 0
+		items.map((item) => summ += item.price);
+		return summ;
+    }
+
     return (
 
         <section className={css.constructor_container}>
@@ -53,7 +59,7 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
                         })
                     }
                 </ul>
-                
+
                 {bun &&
                     <ConstructorElement
                         key={bun._id}
@@ -68,7 +74,7 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
 
             <div className={css.counter_container} >
                 <div className={css.counter_item} >
-                    <p className="text text_type_digits-medium mr-4">610</p>
+                    <p className="text text_type_digits-medium mr-4">{orderSumm(bun, onIngredients )}</p>
                     <CurrencyIcon type="primary" />
                 </div>
                 <Button

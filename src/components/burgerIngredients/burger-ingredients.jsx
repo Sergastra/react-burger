@@ -1,12 +1,17 @@
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState, useRef,  } from "react";
 import BurgerItem from "./burger-item";
-import styles from './burger-ingredients.module.css'
+import styles from './burger-ingredients.module.css';
 import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
+import PropTypes from 'prop-types';
+import { ingredientType } from "../../prop-types";
 
 
 const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
+    console.log({'ingredients ==>': ingredients});
+    console.log({'setOnIngredients ==>': setOnIngredients});
+    console.log({'setBun ==>': setBun});
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
@@ -108,3 +113,7 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
     )
 }
 export default BurgerIngredients;
+
+BurgerIngredients.propTypes = {
+    ingredients: PropTypes.arrayOf(ingredientType)
+};

@@ -2,6 +2,7 @@ import {Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-deve
 import styles from './navbar.module.css'
 
 const Navbar = () => {
+    
     return (
         <nav className={styles.navbar_nav}>
 
@@ -12,7 +13,7 @@ const Navbar = () => {
                     <span className="text text_type_main-default">Конструктор</span>
                 </a>
 
-                <a href="/" className={styles.nav_links}>
+                <a href="/" className={styles.nav_links} >
                     <ListIcon type="secondary" />
                     <span className="text text_type_main-default">Лента заказов</span>
                 </a>
@@ -22,9 +23,9 @@ const Navbar = () => {
             <div className={styles.nav_logo}>
                 <a href='/'><Logo /></a>
             </div>
-            
+
             <div className={styles.nav_item}>
-                <a href="/" className={styles.nav_links}>
+                <a href="/" className={styles.nav_links} >
                     <ProfileIcon className='mr-5' type="secondary" />
                     <span className="text text_type_main-default">Личный кабинет</span>
                 </a>
