@@ -6,6 +6,7 @@
 }
 
 App {
+  font-family: 'JetBrains Mono', monospace;
   max-width: 1920px;
   background: #131316;
   max-height: 700px;

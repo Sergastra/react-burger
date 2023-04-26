@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
+import { ingredientType } from "../../../prop-types";
+
 import'./ingredient-details.css'
 
-const IngredientDetails = ({ ingredients }) => {
-	console.log({ 'itemsDetails =>': ingredients });
 
+const IngredientDetails = ({ ingredients }) => {
+	
 	return (
 
 		<div className="portal"  >
@@ -21,3 +24,7 @@ const IngredientDetails = ({ ingredients }) => {
 }
 
 export default IngredientDetails;
+
+IngredientDetails.propTypes = {
+	ingredients: PropTypes.arrayOf(ingredientType).isRequired,
+};

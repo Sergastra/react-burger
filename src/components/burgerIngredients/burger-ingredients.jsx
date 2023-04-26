@@ -9,9 +9,7 @@ import { ingredientType } from "../../prop-types";
 
 
 const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
-    console.log({'ingredients ==>': ingredients});
-    console.log({'setOnIngredients ==>': setOnIngredients});
-    console.log({'setBun ==>': setBun});
+    
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
@@ -115,5 +113,5 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
 export default BurgerIngredients;
 
 BurgerIngredients.propTypes = {
-    ingredients: PropTypes.arrayOf(ingredientType)
+    ingredients: PropTypes.arrayOf(ingredientType),
 };

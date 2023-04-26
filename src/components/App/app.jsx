@@ -12,6 +12,7 @@ function App() {
   const [onIngredients, setOnIngredients] = useState([]);
   const [bun, setBun] = useState('');
   const [ingredientsLoading, setIngredientsLoading] = useState(true);
+  
   useEffect(() => {
     getIngredients()
       .then(setIngredients)

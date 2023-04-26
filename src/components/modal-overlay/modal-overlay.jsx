@@ -6,3 +6,4 @@ export const ModalOverlay = (onClose) => {
 }
 
 export default ModalOverlay;
+

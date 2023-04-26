@@ -2,6 +2,8 @@ import { ConstructorElement, DragIcon, CurrencyIcon, Button  } from "@ya.praktik
 import React, { useState } from 'react';
 import Modal from "../modal/modal";
 import { OrderDetails } from "./order-details/order-details";
+import PropTypes from 'prop-types';
+import { ingredientType } from "../../prop-types";
 import css from './burger-constructor.module.css'
 
 
@@ -95,3 +97,7 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
 }
 
 export default BurgerConstructor;
+
+BurgerConstructor.propTypes = {
+    onIngredients: PropTypes.arrayOf(ingredientType).isRequired,
+};
