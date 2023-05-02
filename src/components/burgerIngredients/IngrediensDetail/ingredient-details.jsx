@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { ingredientType } from "../../../prop-types";
+
 
 import'./ingredient-details.css'
 
@@ -26,5 +26,10 @@ const IngredientDetails = ({ ingredients }) => {
 export default IngredientDetails;
 
 IngredientDetails.propTypes = {
-	ingredients: PropTypes.arrayOf(ingredientType).isRequired,
+	image_large: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
+	proteins: PropTypes.number.isRequired,
+	fat: PropTypes.number.isRequired,
+	carbohydrates: PropTypes.number.isRequired,
+	calories: PropTypes.number.isRequired,
 };
