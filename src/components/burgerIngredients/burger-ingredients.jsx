@@ -1,15 +1,15 @@
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState, useRef,  } from "react";
+import { useState, useRef, } from "react";
 import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css';
 import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
 import PropTypes from 'prop-types';
-import { ingredientType } from "../../prop-types";
+import { ingredientType } from "../../utils/prop-types";
 
 
 const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
-    
+
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
@@ -47,7 +47,7 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
         <div className={styles.ingredients_container}>
             <h1> Соберите бургер </h1>
 
-            <div style={{ display: "flex" }} >
+            <div className={styles.tab_container}>
                 <Tab value="bun" active={current === "bun"} onClick={(e) => {
                     scollTobunRef.current.scrollIntoView({ behavior: "smooth" })
                     setCurrent(e)
@@ -102,8 +102,9 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
                 })}
             </section>
             {ingredientInModal && (
-                <Modal onClose={closeIngredientModal} title="Детали ингредиента">
-                    <IngredientDetails ingredients={ingredientInModal} />
+                <Modal onClose={closeIngredientModal} isOpen={ingredientInModal} title="Детали ингредиента">
+                    <IngredientDetails ingredient={ingredientInModal} />
+                
                 </Modal>
             )}
 

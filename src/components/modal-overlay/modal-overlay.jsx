@@ -1,9 +1,15 @@
-import './modal-overlay.css';
 
-export const ModalOverlay = (onClose) => {
+import css from '../modal/modal.module.css';
+
+
+
+export const ModalOverlay = (onClick) => {
 	
-	return <div className='modal_overlay' onClick={() => onClose} />
-}
+		return (
+		
+			<div className={css.modal_overlay} onClick= {() =>  onClick}/>
+		)
+};
 
 export default ModalOverlay;
 

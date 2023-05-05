@@ -12,6 +12,7 @@
     box-shadow: 0 24px 32px rgb(0 0 0 / 4%), 0 16px 24px rgb(0 0 0 / 4%), 0 4px 8px rgb(0 0 0 / 4%), 0 0 1px rgb(0 0 0 / 4%);
     border-radius: 40px;
     width: 720px;
+    pointer-events: all;
 }
 
 .header{
@@ -40,4 +41,16 @@
     
     height: min-content;
     margin-bottom: 20px;
+}
+
+.modal_overlay {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(19, 19, 19, 0.7);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: 99;
+    pointer-events: all;
 }

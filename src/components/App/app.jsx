@@ -1,4 +1,4 @@
-import styles from './app.css';
+import styles from './app.module.css';
 import {useEffect, useState} from 'react';
 import AppHeader from '../AppHeader/app-header';
 import BurgerConstructor from '../burgerConstructor/burger-constructor';

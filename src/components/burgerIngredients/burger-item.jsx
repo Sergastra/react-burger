@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { ingredientType } from '../../utils/prop-types';
 import { Counter, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
 const BurgerItem = (item) => {
@@ -16,6 +18,10 @@ const BurgerItem = (item) => {
     )
 }
 export default React.memo(BurgerItem);
+
+BurgerItem.propTypes = {
+    item: PropTypes.arrayOf(ingredientType),
+};
 
 
 

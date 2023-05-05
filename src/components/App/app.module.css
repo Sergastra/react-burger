@@ -1,8 +1,7 @@
-
-* {
+*{
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 App {
@@ -11,6 +10,7 @@ App {
   background: #131316;
   max-height: 700px;
   overflow: hidden;
+  margin: auto;
 }
 
 main {
@@ -22,8 +22,11 @@ main {
 
 .main_container{
   width: 1260px;
-} 
+  margin: auto;
+}
+
 h1 {
   font-size: 36px;
   margin: 40px 0 20px 0;
 }
+

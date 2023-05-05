@@ -1,23 +1,24 @@
 import PropTypes from 'prop-types';
+// import { ingredientType } from '../../../prop-types';
 
 
-import'./ingredient-details.css'
+import css from './ingredient-details.module.css'
 
 
-const IngredientDetails = ({ ingredients }) => {
-	
+const IngredientDetails = ({ingredient}) => {
+	const{ image_large } = ingredient;
 	return (
 
-		<div className="portal"  >
+		<div className={css.portal} >
 
-			<img src={ingredients.image_large} alt={ingredients.name} style={{ width: '480px' }} />
+			<img src={image_large} alt={ingredient.name} className={css.image} />
 
-			<span className="text text_type_main-medium">{ingredients.name}</span>
-			<div className="product_energy">
-				<span className="text text_type_main-small text_color_inactive">Калории, ккал<br />{ingredients.calories}</span>
-				<span className="text text_type_main-small text_color_inactive">Белки, г<br />{ingredients.proteins}</span>
-				<span className="text text_type_main-small text_color_inactive">Жиры, г<br />{ingredients.fat}</span>
-				<span className="text text_type_main-small text_color_inactive">Углеводы, г<br />{ingredients.carbohydrates}</span>
+			<span className="text text_type_main-medium">{ingredient.name}</span>
+			<div className={css.product_energy}>
+				<span className="text text_type_main-small text_color_inactive">Калории, ккал<br />{ingredient.calories}</span>
+				<span className="text text_type_main-small text_color_inactive">Белки, г<br />{ingredient.proteins}</span>
+				<span className="text text_type_main-small text_color_inactive">Жиры, г<br />{ingredient.fat}</span>
+				<span className="text text_type_main-small text_color_inactive mb-8">Углеводы, г<br />{ingredient.carbohydrates}</span>
 			</div>
 		</div>
 	);
@@ -26,10 +27,11 @@ const IngredientDetails = ({ ingredients }) => {
 export default IngredientDetails;
 
 IngredientDetails.propTypes = {
-	image_large: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	proteins: PropTypes.number.isRequired,
-	fat: PropTypes.number.isRequired,
-	carbohydrates: PropTypes.number.isRequired,
-	calories: PropTypes.number.isRequired,
+	// ingredient: PropTypes.arrayOf(ingredientType),
+	name: PropTypes.string,
+	proteins: PropTypes.number,
+	fat: PropTypes.number,
+	carbohydrates: PropTypes.number,
+	calories: PropTypes.number,
+	image_large: PropTypes.string,
 };

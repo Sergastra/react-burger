@@ -1,16 +1,16 @@
-import { ConstructorElement, DragIcon, CurrencyIcon, Button  } from "@ya.praktikum/react-developer-burger-ui-components";
-import React, { useState } from 'react';
+import { ConstructorElement, DragIcon, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import React from 'react';
+import { useModal } from "../../hooks/useModal";
 import Modal from "../modal/modal";
 import { OrderDetails } from "./order-details/order-details";
 import PropTypes from 'prop-types';
-import { ingredientType } from "../../prop-types";
+import { ingredientType } from "../../utils/prop-types";
 import css from './burger-constructor.module.css'
 
 
 const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
-    const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
-    const openOrderModal = () => setIsOrderModalOpen(true);
-    const closeOrderModal = () => setIsOrderModalOpen(false);
+    
+    const { isModalOpen, openModal, closeModal } = useModal();
 
     const handleDeleteElem = (id) => {
         const result = onIngredients.filter((item) => item._id !== id);
@@ -18,16 +18,16 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
     }
 
     const orderSumm = (bun, items) => {
-		let summ = (bun)? bun.price*2 : 0
-		items.map((item) => summ += item.price);
-		return summ;
+        let summ = (bun) ? bun.price * 2 : 0
+        items.map((item) => summ += item.price);
+        return summ;
     }
 
     return (
 
         <section className={css.constructor_container}>
             <div className={css.constructNo}> Добавьте ингредиенты </div>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} key={bun._id}>
+            <div className={css.container_element} key={bun._id}>
 
                 {bun &&
                     <ConstructorElement className='constructor-element_pos_top ml-4'
@@ -46,7 +46,7 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
                                 <React.Fragment key={item._id}>
                                     <li className='constructor-element__row pl-2 mt-5 mb-5 mr-2 w-100%' >
                                         <DragIcon className="mr-3" type="primary" />
-                                        <div style={{ width: '100%', height: '80px' }}>
+                                        <div className={css.item_container}>
                                             <ConstructorElement
                                                 className='constructor-element__text mr-2'
                                                 handleClose={() => handleDeleteElem(item._id)}
@@ -76,7 +76,7 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
 
             <div className={css.counter_container} >
                 <div className={css.counter_item} >
-                    <p className="text text_type_digits-medium mr-4">{orderSumm(bun, onIngredients )}</p>
+                    <p className="text text_type_digits-medium mr-4">{orderSumm(bun, onIngredients)}</p>
                     <CurrencyIcon type="primary" />
                 </div>
                 <Button
@@ -84,12 +84,12 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
                     type="primary"
                     size="large"
                     children="Оформить заказ"
-                    onClick={() => openOrderModal()}
+                    onClick={() => openModal()}
                 />
             </div>
-            {isOrderModalOpen && (
-                <Modal onClose={closeOrderModal}>
-                    <OrderDetails />
+            {isModalOpen && (
+                <Modal onClose={closeModal}>
+                    <OrderDetails title='034567' />
                 </Modal>
             )}
         </section>
