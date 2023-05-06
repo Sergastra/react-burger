@@ -5,16 +5,16 @@ const checkResponse = (res) => {
 };
 
 export const getIngredients = () => {
-  return fetch(`${BURGER_URL}/ingredients`)
-    .then(checkResponse)
+  return request(`${BURGER_URL}/ingredients`)
     .then(data => {
       if (data?.success) return data.data;
       return Promise.reject(data)
-    });
+    }
+  );
 };
 
-/* универсальная функция - подключу позже*/
+/* универсальная функция */
 
-// function request(url, options) {
-//   return fetch(url, options).then(checkResponse)
-// };
+function request(url, options) {
+  return fetch(url, options).then(checkResponse)
+};

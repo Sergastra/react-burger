@@ -10,11 +10,11 @@ export const OrderDetails = ({title}) => {
 
 			<p className= "text text_type_main-medium p-3 pt-5" >идентификатор заказа</p>
 
-			<img src={imgDone} alt={"done"} />
+			<img src={imgDone} alt={"done"} className={css.image} />
 
-			<p className="text text_type_main-medium mb-2">Ваш заказ начали готовить</p>
+			<p className="text text_type_main-small mb-5">Ваш заказ начали готовить</p>
 
-			<p className="text text_type_main-small text_color_inactive mb-8">Дождитесь готовности на орбитальной станции</p>
+			<p className="text text_type_main-small text_color_inactive">Дождитесь готовности на орбитальной станции</p>
 
 		</div>
 	);

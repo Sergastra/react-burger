@@ -7,7 +7,7 @@ import ModalOverlay from "../modal-overlay/modal-overlay";
 
 const modalRoot = document.getElementById("modal");
 
-export const Modal = ({ children, title, onClose, isOpen }) => {
+export const Modal = ({ children, title, onClose }) => {
 
     useEffect(() => {
         const handleEsc = (e) => {
@@ -32,10 +32,10 @@ export const Modal = ({ children, title, onClose, isOpen }) => {
                         <CloseIcon type="primary" onClick={onClose} />
                     </button>
                 </div>
-                <div className="content">{children}</div>
+                <div className={styles.content}>{children}</div>
             </div>
 
-            <ModalOverlay onClick={onClose} isOpen={isOpen}/>
+            <ModalOverlay onClick={onClose} />
         </>,
 
         modalRoot

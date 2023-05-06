@@ -102,7 +102,7 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
                 })}
             </section>
             {ingredientInModal && (
-                <Modal onClose={closeIngredientModal} isOpen={ingredientInModal} title="Детали ингредиента">
+                <Modal onClose={closeIngredientModal} title="Детали ингредиента">
                     <IngredientDetails ingredient={ingredientInModal} />
                 
                 </Modal>

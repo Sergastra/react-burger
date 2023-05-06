@@ -27,7 +27,6 @@ const IngredientDetails = ({ingredient}) => {
 export default IngredientDetails;
 
 IngredientDetails.propTypes = {
-	// ingredient: PropTypes.arrayOf(ingredientType),
 	name: PropTypes.string,
 	proteins: PropTypes.number,
 	fat: PropTypes.number,
