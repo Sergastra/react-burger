@@ -1,0 +1,17 @@
+.overlay{
+    width: 1000px;
+    height: 600px;
+    background-color: #1e1d1d4c;
+    color: azure;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    margin: 40px auto;
+    z-index: 10;
+    border-radius: 10%;
+}
+
+h2 {
+   margin: 40px auto;
+   font-size: 36px;
+}
