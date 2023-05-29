@@ -1,5 +1,5 @@
 export const initialState = {
-    data: [],
+    ingredients: [],
     burgerIngredients: {
         bun: null,
         contentItems: [],

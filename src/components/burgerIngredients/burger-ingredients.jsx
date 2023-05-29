@@ -2,17 +2,19 @@ import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useState, useRef, } from "react";
 import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css';
+import {useSelector} from 'react-redux';
 import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
 import PropTypes from 'prop-types';
 import { ingredientType } from "../../utils/prop-types";
 
 
-const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
+const BurgerIngredients = () => {
 
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
+    const ingredients = useSelector(store => store.apiData);
 
     const typeIngredient = ["bun", "sauce", "main"];
     const scollTobunRef = useRef();
@@ -26,22 +28,22 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
         main: 'Начинки'
     }
 
-    const handleClick = (elem) => {
-        if (elem.type === 'bun') {
-            setBun(elem)
-        } else {
-            setOnIngredients(prev => {
-                if (!prev.some(item => item._id === elem._id)) {
-                    return [...prev, elem]
-                } else {
-                    return prev
-                }
-            })
-        };
+    // const handleClick = (elem) => {
+    //     // if (elem.type === 'bun') {
+    //     //     setBun(elem)
+    //     // } else {
+    //     //     setOnIngredients(prev => {
+    //     //         if (!prev.some(item => item._id === elem._id)) {
+    //     //             return [...prev, elem]
+    //     //         } else {
+    //     //             return prev
+    //     //         }
+    //     //     })
+    //     // };
 
-        setIngredientInModal(elem);
+    //     setIngredientInModal(elem);
 
-    }
+    // }
 
     return (
         <div className={styles.ingredients_container}>
@@ -82,24 +84,40 @@ const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
                         <div key={itemType}>
                             <h3 className={styles.ingredients_header} ref={carrentRef} >{translate[itemType]} </h3>
                             <div className={styles.ingredients_body} >
-                                {ingredients
+                                {/* {ingredients
                                     .filter((elem) => elem.type === itemType)
                                     .map((item) => {
                                         return (
                                             <div key={item._id} className={styles.ingredients_item} onClick={() => handleClick(item)}>
+                                            
                                                 <BurgerItem
                                                     name={item.name}
                                                     image={item.image}
                                                     price={item.price}
+                                                    apiData={ingredients}
                                                 />
                                             </div>
                                         )
                                     })
-                                }
+                                } */}
+                                
+                                    {ingredients.filter((item) => item.type === itemType)
+                                    .map((item) => {
+                                        return (
+                                            <div>
+                                            
+                                                <BurgerItem
+                                                    key={item._id}
+                                                    // name={item.name}
+                                                    // image={item.image}
+                                                    // price={item.price}
+                                                    apiData={item}
+                                                />
+                                            </div>
+                                    )})}
                             </div>
                         </div>
-                    )
-                })}
+                    )})}
             </section>
             {ingredientInModal && (
                 <Modal onClose={closeIngredientModal} title="Детали ингредиента">

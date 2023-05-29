@@ -99,5 +99,5 @@ const BurgerConstructor = ({ onIngredients, bun, setOnIngredients }) => {
 export default BurgerConstructor;
 
 BurgerConstructor.propTypes = {
-    onIngredients: PropTypes.arrayOf(ingredientType).isRequired,
+    onIngredients: PropTypes.arrayOf(ingredientType),
 };
