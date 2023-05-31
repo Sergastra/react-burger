@@ -8,5 +8,6 @@ export const initialState = {
     modal: {},
     order: {
         number: 0
-    }
+    },
+    ingredientsLoading: true
 };

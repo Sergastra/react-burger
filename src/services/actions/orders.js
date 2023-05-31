@@ -1,5 +1,4 @@
 import {createOrderUrl} from '../../utils/api';
-import {request} from '../../utils/api';
 import {ORDER_LOAD, RESET_CONSTRUCTOR} from "./index";
 
 
