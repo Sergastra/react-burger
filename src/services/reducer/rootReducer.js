@@ -13,7 +13,7 @@ import {
 	RESET_CONSTRUCTOR
 } from '../actions';
 import {initialState} from '../initialState';
-import {RandomKey} from '../../utils/random-key';
+import {RandomKey} from '../../utils/randomKey';
 
 export const rootReducer = (state = initialState, action) => {
 	switch(action.type) {
@@ -57,7 +57,6 @@ export const rootReducer = (state = initialState, action) => {
 		case INGREDIENTS_ON:
 			const item = action.item;
 			if (item.type === 'bun') {
-				console.log(item)
 				return {
 					...state,
 					burgerIngredients: {

@@ -1,4 +1,4 @@
-const BURGER_URL = "https://norma.nomoreparties.space/api";
+export const BURGER_URL = "https://norma.nomoreparties.space/api";
 export const createOrderUrl = BURGER_URL + '/orders';
 
 const checkResponse = (res) => {

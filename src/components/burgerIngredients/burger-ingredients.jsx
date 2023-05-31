@@ -6,10 +6,11 @@ import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
 import PropTypes from 'prop-types';
 import { ingredientType } from "../../utils/prop-types";
+import {useSelector} from "react-redux";
 
 
-const BurgerIngredients = ({ ingredients, setOnIngredients, setBun }) => {
-
+const BurgerIngredients = ({ setOnIngredients, setBun }) => {
+    const {ingredients} = useSelector(store => store.data);
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);

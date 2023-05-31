@@ -1,10 +1,10 @@
-import {createOrderUrl} from '../../utils/api';
+import * as api from '../../utils/api';
 import {ORDER_LOAD, RESET_CONSTRUCTOR} from "./index";
 
 
 export function createOrder(ingredientsArr) {
 	return function (dispatch) {
-		fetch(createOrderUrl, {
+		fetch(api.createOrderUrl, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8'
