@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { randomKey } from "../../utils/random-key";
+import { randomKey } from '../../utils/random-key';
 import { fetchIngredients } from "../thunks/fetchIngredients";
 
 const initialState = {

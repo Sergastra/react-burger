@@ -1,4 +1,4 @@
-export const RandomKey = function() {
+export const randomKey = function() {
     let length = 24,
         charset = "abcdefghijklmnopqrstuvwxyz0123456789",
         count = charset.length,
