@@ -1,4 +1,4 @@
-import { ConstructorElement, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
+import { ConstructorElement, DragIcon, CurrencyIcon, Button } from "@ya.praktikum/react-developer-burger-ui-components";
 import React, {useCallback} from 'react';
 import { useModal } from "../../hooks/useModal";
 import Modal from "../modal/modal";
@@ -10,7 +10,6 @@ import { useDrop } from 'react-dnd';
 import { useSelector, useDispatch } from 'react-redux';
 import {TRANSFER_INGREDIENT, INGREDIENT_DELETE, COUNTER_DOWN} from '../../services/actions';
 import {createOrder} from '../../services/actions/order';
-import BurgerConstructorElement from "./burger-constructor_element";
 
 
 export const BurgerConstructor = ({onDropHandler}) => {
@@ -92,17 +91,22 @@ export const BurgerConstructor = ({onDropHandler}) => {
 
                 <ul className={css.constructor_item}>
                     {
-                        contentItems && contentItems.map((item, i) => {
+                        contentItems && contentItems.map((item) => {
                             return (
                                 <React.Fragment key={item._id}>
-                                    <BurgerConstructorElement
-                                        key={item.productId}
-                                        item={item}
-                                        isLocked={false}
-                                        deleteFunc={handleDeleteElem}
-                                        moveFunc={moveItem}
-                                        index={i}
-                                    />
+                                    <li className='constructor-element__row pl-2 mt-5 mb-5 mr-2 w-100%' >
+                                        <DragIcon className="mr-3" type="primary" />
+                                        <div className={css.item_container}>
+                                            <ConstructorElement
+                                                className='constructor-element__text mr-2'
+                                                handleClose={() => handleDeleteElem(item._id)}
+                                                text={item.name}
+                                                price={item.price}
+                                                thumbnail={item.image}
+                                                moveFunc={moveItem}
+                                            />
+                                        </div>
+                                    </li>
                                 </React.Fragment>
                             )
                         })

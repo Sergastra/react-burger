@@ -4,44 +4,17 @@ import AppHeader from '../AppHeader/app-header';
 import BurgerConstructor from '../burgerConstructor/burger-constructor';
 import BurgerIngredients from '../burgerIngredients/burger-ingredients';
 import Preloader from '../preloader/preloader';
-import {INGREDIENTS_ON, COUNTER_UP} from '../../services/actions';
-import {getIngredients} from '../../services/actions/ingredient';
-import {useDispatch} from "react-redux";
-import {DndProvider} from "react-dnd";
-import {HTML5Backend} from "react-dnd-html5-backend";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchIngredients} from "../../services/thunks/fetchIngredients";
 
 
 function App() {
-  // const [ingredients, setIngredients] = useState([]);
-  // const [onIngredients, setOnIngredients] = useState([]);
-  // const [bun, setBun] = useState('');
-  // const [ingredientsLoading, setIngredientsLoading] = useState(true);
-  
-  // useEffect(() => {
-  //   getIngredients()
-  //     .then(setIngredients)
-  //     .catch(() => alert("Во время загрузки произошла ошибка"))
-  //     .finally(() => setIngredientsLoading(false))
-  // }, []);
-
+  const {ingredientsLoading} = useSelector(state => state.ingredient);
   const dispatch = useDispatch();
-	const ingredientsLoading = getIngredients()
-  useEffect(()=>{
-    dispatch(getIngredients());
-  },[dispatch]);
 
-  const handleDrop = (item) => {
-      dispatch({
-          type: INGREDIENTS_ON,
-          item: item
-      })
-      dispatch({
-          type: COUNTER_UP,
-          key: item._id,
-          typeItem: item.type
-      })
-  };
-
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, [dispatch]);
 
   return (
     <>
@@ -51,19 +24,8 @@ function App() {
       ) : (
         <div className={styles.main_container}>
           <main>
-            <DndProvider backend={HTML5Backend}>
-              <BurgerIngredients
-                // ingredients={ingredients}
-                // setOnIngredients={setOnIngredients}
-                // setBun={setBun}
-              />
-              <BurgerConstructor
-                onDropHandler={handleDrop}
-                // onIngredients={onIngredients}
-                // setOnIngredients={setOnIngredients}
-                // bun={bun}
-              />
-            </DndProvider>
+            <BurgerIngredients />
+            <BurgerConstructor />
           </main>
         </div>
       )}
