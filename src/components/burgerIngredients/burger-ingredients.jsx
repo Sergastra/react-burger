@@ -1,16 +1,15 @@
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState, useRef, } from "react";
+import { useState, useRef } from "react";
 import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css';
 import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
-import PropTypes from 'prop-types';
-import { ingredientType } from "../../utils/prop-types";
 import {useSelector} from "react-redux";
 
 
-const BurgerIngredients = ({ setOnIngredients, setBun }) => {
-    const {ingredients} = useSelector(store => store.data);
+const BurgerIngredients = () => {
+
+    const { ingredients } = useSelector(state => state.ingredient);
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
@@ -28,20 +27,7 @@ const BurgerIngredients = ({ setOnIngredients, setBun }) => {
     }
 
     const handleClick = (elem) => {
-        if (elem.type === 'bun') {
-            setBun(elem)
-        } else {
-            setOnIngredients(prev => {
-                if (!prev.some(item => item._id === elem._id)) {
-                    return [...prev, elem]
-                } else {
-                    return prev
-                }
-            })
-        };
-
         setIngredientInModal(elem);
-
     }
 
     return (
@@ -89,9 +75,7 @@ const BurgerIngredients = ({ setOnIngredients, setBun }) => {
                                         return (
                                             <div key={item._id} className={styles.ingredients_item} onClick={() => handleClick(item)}>
                                                 <BurgerItem
-                                                    name={item.name}
-                                                    image={item.image}
-                                                    price={item.price}
+                                                    item={item}
                                                 />
                                             </div>
                                         )
@@ -105,7 +89,7 @@ const BurgerIngredients = ({ setOnIngredients, setBun }) => {
             {ingredientInModal && (
                 <Modal onClose={closeIngredientModal} title="Детали ингредиента">
                     <IngredientDetails ingredient={ingredientInModal} />
-                
+
                 </Modal>
             )}
 
@@ -113,7 +97,3 @@ const BurgerIngredients = ({ setOnIngredients, setBun }) => {
     )
 }
 export default BurgerIngredients;
-
-BurgerIngredients.propTypes = {
-    ingredients: PropTypes.arrayOf(ingredientType),
-};
