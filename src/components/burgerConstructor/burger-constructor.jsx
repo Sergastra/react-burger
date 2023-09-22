@@ -132,13 +132,14 @@ const BurgerConstructor = () => {
                     )}
                     <CurrencyIcon type="primary" />
                 </div>
+                {Object.keys(bun).length > 0 ? (
                 <Button
                     htmlType="button"
                     type="primary"
                     size="large"
                     children="Оформить заказ"
                     onClick={sendOrder}
-                />
+                /> ) : ( <h2> Для заказа добавьте булку </h2> )}
             </div>
             {isModalOpen && (
                 <Modal onClose={closeModal}>

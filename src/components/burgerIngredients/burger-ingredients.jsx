@@ -1,10 +1,11 @@
 import { Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import BurgerItem from "./burger-item";
 import styles from './burger-ingredients.module.css';
 import Modal from "../modal/modal";
 import IngredientDetails from "./IngrediensDetail/ingredient-details";
 import {useSelector} from "react-redux";
+import { useInView } from "react-intersection-observer";
 
 
 const BurgerIngredients = () => {
@@ -13,6 +14,20 @@ const BurgerIngredients = () => {
     const [current, setCurrent] = useState('bun');
     const [ingredientInModal, setIngredientInModal] = useState(null);
     const closeIngredientModal = () => setIngredientInModal(null);
+
+    const [ref, inView] = useInView({ threshold: 0.1 });
+    
+    useEffect(() => {
+   
+        if(inView){
+            setCurrent('sauce');
+            
+        }else if(inView){
+            setCurrent('main')
+        }else{
+                setCurrent('bun')
+        }
+    }, [inView]);
 
     const typeIngredient = ["bun", "sauce", "main"];
     const scollTobunRef = useRef();
@@ -68,7 +83,7 @@ const BurgerIngredients = () => {
 
                         <div key={itemType}>
                             <h3 className={styles.ingredients_header} ref={carrentRef} >{translate[itemType]} </h3>
-                            <div className={styles.ingredients_body} >
+                            <div className={styles.ingredients_body} ref={ref}>
                                 {ingredients
                                     .filter((elem) => elem.type === itemType)
                                     .map((item) => {

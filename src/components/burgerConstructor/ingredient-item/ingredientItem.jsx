@@ -2,6 +2,8 @@ import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burg
 import React, {useRef} from 'react';
 import css from "../burger-constructor.module.css";
 import {useDrag, useDrop} from "react-dnd";
+import {PropTypes} from 'prop-types';
+import { ingredientType } from '../../../prop-types';
 
 const IngredientItem = (props) => {
     const { item, handleDeleteElem, index, moveListItem } = props;
@@ -60,3 +62,10 @@ const IngredientItem = (props) => {
 };
 
 export default IngredientItem;
+
+IngredientItem.propTypes = {
+    item: ingredientType,
+    index: PropTypes.number.isRequired,
+    moveListItem: PropTypes.func.isRequired,
+    handleDeleteElem: PropTypes.func.isRequired,
+};
