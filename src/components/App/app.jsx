@@ -1,25 +1,20 @@
 import styles from './app.module.css';
-import {useEffect, useState} from 'react';
+import {useEffect} from 'react';
 import AppHeader from '../AppHeader/app-header';
 import BurgerConstructor from '../burgerConstructor/burger-constructor';
 import BurgerIngredients from '../burgerIngredients/burger-ingredients';
-import { getIngredients } from '../../utils/api';
 import Preloader from '../preloader/preloader';
+import {useDispatch, useSelector} from "react-redux";
+import {fetchIngredients} from "../../services/thunks/fetchIngredients";
 
 
 function App() {
-  const [ingredients, setIngredients] = useState([]);
-  const [onIngredients, setOnIngredients] = useState([]);
-  const [bun, setBun] = useState('');
-  const [ingredientsLoading, setIngredientsLoading] = useState(true);
-  
-  useEffect(() => {
-    getIngredients()
-      .then(setIngredients)
-      .catch(() => alert("Во время загрузки произошла ошибка"))
-      .finally(() => setIngredientsLoading(false))
-  }, []);
+  const {ingredientsLoading} = useSelector(state => state.ingredient);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchIngredients());
+  }, [dispatch]);
 
   return (
     <>
@@ -29,16 +24,8 @@ function App() {
       ) : (
         <div className={styles.main_container}>
           <main>
-            <BurgerIngredients
-              ingredients={ingredients}
-              setOnIngredients={setOnIngredients}
-              setBun={setBun}
-            />
-            <BurgerConstructor
-              onIngredients={onIngredients}
-              setOnIngredients={setOnIngredients}
-              bun={bun}
-            />
+            <BurgerIngredients />
+            <BurgerConstructor />
           </main>
         </div>
       )}

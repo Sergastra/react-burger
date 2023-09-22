@@ -1,6 +1,12 @@
 .constructNo {
     display: none;
-    font-size: 27px;
+}
+
+.drop_msg {
+    height: 40px;
+    text-align: center;
+    font-size: 35px;
+
 }
 
 .constructor_container {
@@ -9,6 +15,18 @@
     align-items: center;
     margin: 100px 0 0 0 ;
     padding: 10px;
+}
+
+.constructor_container_active{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 590px;
+    height: 500px;
+    border: 5px solid #3a3a47;
+    background-color: #1C1C21;
+    padding-top: 35px;
+    margin: 100px 0 0 0 ;
 }
 
 .container_element {
